@@ -1,20 +1,15 @@
-from typing import Collection
 from pymongo.mongo_client import MongoClient
 from django.conf import settings
 
-# TODO: consider moving staff to settings/envs
-DB_NAME = 'testapp'
-TEST_COLLECTION_NAME = 'testcollection'
 
-
-def get_collection(db_name=None, host=None, port=None, username=None, password=None, collection=None):
+def get_collection(db_name: str = '', collection: str = ''):
 
     client = MongoClient(
-        host=host,
-        port=int(port) if port else None,
-        username=username,
-        password=password
+        host=settings.DB_HOST,
+        port=settings.DB_PORT,
+        username=settings.DB_USERNAME,
+        password=settings.DB_PASSWORD,
     )
 
-    db_handle = client[db_name or DB_NAME]
-    return db_handle[collection or TEST_COLLECTION_NAME]
+    db_handle = client[db_name or settings.DB_NAME]
+    return db_handle[collection or settings.TEST_COLLECTION_NAME]

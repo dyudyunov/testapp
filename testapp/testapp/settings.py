@@ -78,7 +78,12 @@ WSGI_APPLICATION = 'testapp.wsgi.application'
 
 # Database
 # https://docs.djangoproject.com/en/4.0/ref/settings/#databases
-
+DB_NAME = 'testapp'
+TEST_COLLECTION_NAME = 'testcollection'
+DB_HOST = None
+DB_PORT = None
+DB_USERNAME = None
+DB_PASSWORD = None
 # DATABASES = {
 #     'default': {
 #         'ENGINE': 'django.db.backends.sqlite3',
